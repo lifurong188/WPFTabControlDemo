@@ -36,6 +36,17 @@ namespace TabControlDemo
             tabControl.ItemsSource = tabItems;
         }
 
+        private void Button1_Loaded(object sender, RoutedEventArgs e)
+        {
+            Button btn = sender as Button;
+            if (btn.Tag.ToString() == "NotLoaded")
+            {
+                btn.Content = "button1";
+                btn.Tag = "Loaded";
+                Console.WriteLine("Button1 is Loaded.");
+            }
+        }
+
         private void Button2_Loaded(object sender, RoutedEventArgs e)
         {
             Button btn = sender as Button;
@@ -46,17 +57,6 @@ namespace TabControlDemo
                 Console.WriteLine("Button2 is Loaded.");
            }
             
-        }
-
-        private void Button1_Loaded(object sender, RoutedEventArgs e)
-        {
-            Button btn = sender as Button;
-            if (btn.Tag.ToString() == "NotLoaded")
-            {
-                btn.Content = "button1";
-                btn.Tag = "Loaded";
-                Console.WriteLine("Button1 is Loaded.");
-            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
