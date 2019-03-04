@@ -25,11 +25,11 @@ namespace TabControlDemo
         public MainWindow()
         {
             InitializeComponent();
-            UserControl1 userControl1 = new UserControl1() { Name="UserControl1"};
-            UserControl2 userControl2 = new UserControl2() { Name= "UserControl2"};
-            tabItems.Add(new TabItem() { Header="TabItem1",Content= userControl1 });
-            tabItems.Add(new TabItem() { Header = "TabItem2", Content = userControl2 });
-            tabControl.ItemsSource = tabItems;
+            //UserControl1 userControl1 = new UserControl1() { Name="UserControl1"};
+            //UserControl2 userControl2 = new UserControl2() { Name= "UserControl2"};
+            //tabItems.Add(new TabItem() { Header="TabItem1",Content= userControl1 });
+            //tabItems.Add(new TabItem() { Header = "TabItem2", Content = userControl2 });
+            //tabControl.ItemsSource = tabItems;
         }
     }
 }

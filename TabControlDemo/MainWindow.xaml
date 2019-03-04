@@ -74,6 +74,13 @@
 
     </Window.Resources>
     <Grid>
-        <TabControl x:Name="tabControl" Style="{StaticResource MainTabControlStyle}"/>
+        <TabControl x:Name="tabControl" Style="{StaticResource MainTabControlStyle}">
+            <TabItem>
+                <local:UserControl1/>
+            </TabItem>
+            <TabItem>
+                <local:UserControl2/>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
