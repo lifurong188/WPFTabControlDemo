@@ -6,7 +6,74 @@
         xmlns:local="clr-namespace:TabControlDemo"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <Style TargetType="{x:Type TabItem}" x:Key="MainTabItemStyle">
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Background" Value="#2A2A2C"/>
+            <Setter Property="Foreground" Value="LightGray"/>
+            <Setter Property="Height" Value="60"/>
+            <!--<Setter Property="TextBlock.FontFamily" Value="pack://application:,,,/Fonts/#iconfont" />
+            <Setter Property="TextBlock.TextAlignment" Value="Center"></Setter>
+            <Setter Property="TextBlock.FontSize" Value="22"></Setter>-->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TabItem}">
+                        <Grid SnapsToDevicePixels="true">
+                            <Border x:Name="Bd" Background="{TemplateBinding Background}" Tag="{TemplateBinding Tag}">
+                                <ContentPresenter x:Name="Content" ContentSource="Header" HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="#F0F0F0"/>
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Content" TargetName="Content" Value="{Binding ElementName=Bd,Path=Tag}"/>
+                                <Setter Property="Foreground" Value="#32CD32"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="TabControl" x:Key="MainTabControlStyle">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="ItemContainerStyle" Value="{StaticResource MainTabItemStyle}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TabControl}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="60"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel x:Name="HeaderPanel" Background="#2A2A2C" IsItemsHost="True" KeyboardNavigation.TabIndex="1"/>
+                            <Border x:Name="ContentPanel" BorderBrush="{TemplateBinding BorderBrush}" 
+                                    BorderThickness="{TemplateBinding BorderThickness}" 
+                                    Background="{TemplateBinding Background}" 
+                                    Grid.Column="1" KeyboardNavigation.DirectionalNavigation="Contained" 
+                                    KeyboardNavigation.TabIndex="2" KeyboardNavigation.TabNavigation="Local">
+                                <ContentPresenter x:Name="PART_SelectedContentHost" Cursor="Arrow" ToolTip="{x:Null}"
+                                                  ContentTemplate="{TemplateBinding SelectedContentTemplate}" 
+                                                  Content="{TemplateBinding SelectedContent}" 
+                                                  ContentStringFormat="{TemplateBinding SelectedContentStringFormat}" 
+                                                  ContentSource="SelectedContent"
+                                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="TabStripPlacement" Value="Left">
+                                <Setter Property="Grid.Column" TargetName="HeaderPanel" Value="0"/>
+                                <Setter Property="Grid.Column" TargetName="ContentPanel" Value="1"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
     <Grid>
-        <TabControl x:Name="tabControl"/>
+        <TabControl x:Name="tabControl" Style="{StaticResource MainTabControlStyle}"/>
     </Grid>
 </Window>

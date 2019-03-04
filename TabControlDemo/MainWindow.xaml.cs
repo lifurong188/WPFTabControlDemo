@@ -25,43 +25,11 @@ namespace TabControlDemo
         public MainWindow()
         {
             InitializeComponent();
-            Button button1 = new Button() { Name="Button1",Tag="NotLoaded" };
-            Button button2 = new Button() { Name="Button2",Tag="NotLoaded" };
-            button1.Loaded += Button1_Loaded;
-            button2.Loaded += Button2_Loaded;
-            button1.Click += Button_Click;
-            button2.Click += Button_Click;
-            tabItems.Add(new TabItem() { Header="TabItem1",Content= button1});
-            tabItems.Add(new TabItem() { Header = "TabItem2", Content = button2 });
+            UserControl1 userControl1 = new UserControl1() { Name="UserControl1"};
+            UserControl2 userControl2 = new UserControl2() { Name= "UserControl2"};
+            tabItems.Add(new TabItem() { Header="TabItem1",Content= userControl1 });
+            tabItems.Add(new TabItem() { Header = "TabItem2", Content = userControl2 });
             tabControl.ItemsSource = tabItems;
-        }
-
-        private void Button1_Loaded(object sender, RoutedEventArgs e)
-        {
-            Button btn = sender as Button;
-            if (btn.Tag.ToString() == "NotLoaded")
-            {
-                btn.Content = "button1";
-                btn.Tag = "Loaded";
-                Console.WriteLine("Button1 is Loaded.");
-            }
-        }
-
-        private void Button2_Loaded(object sender, RoutedEventArgs e)
-        {
-            Button btn = sender as Button;
-            if(btn.Tag.ToString() == "NotLoaded")
-            {
-                btn.Content = "button2";
-                btn.Tag = "Loaded";
-                Console.WriteLine("Button2 is Loaded.");
-           }
-            
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            (sender as Button).Content = (sender as Button).Content.ToString().ToUpper();
         }
     }
 }
